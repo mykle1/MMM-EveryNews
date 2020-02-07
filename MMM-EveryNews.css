@@ -1,0 +1,36 @@
+/* Copy and paste any or all of these css entries into your custom.css file inside your
+ * css folder. The functions are annotated to make things as easy as possible for you.
+ * Use any colors you want! For example - "http://htmlcolorcodes.com/color-picker/"
+ * Pick your color, copy and paste the HEX number. Example - #62FF00 = bright green.
+ */
+
+.MMM-EveryNews .header {
+  color: cyan;             /* Color the title text. Default is white. */
+  text-align: center;           /* Align the title text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want title text */
+}
+
+.MMM-EveryNews .source {
+  color: cyan;             /* Color the title text. Default is white. */
+  text-align: center;           /* Align the title text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want title text */
+}
+
+.MMM-EveryNews .title {
+  color: cyan;             /* Color the title text. Default is white. */
+  text-align: center;           /* Align the title text. (left, center, right) */
+  /*  display: none; */         /* Uncomment if you don't want title text */
+}
+
+.MMM-EveryNews .photo {
+    width: 350px;             /* Maximum width of image */
+    height: 350px
+    padding: 0px;             /* Nudge image */
+    float: left;              /* Align the picture. (left, center, right) */
+}
+
+.MMM-EveryNews .description {
+  color: cyan;             /* Color the information. Default is white. */
+  text-align: center;           /* Align the information. (left, center, right) */
+/*  display: none; */         /* Uncomment if you don't want descriptive information */
+}
