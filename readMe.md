@@ -24,7 +24,7 @@
       source: 'bbc-news,cbs-news', // any source from https://newsapi.org/sources. // Up to 10 at once
       scroll: true,                                  // description scroll or static
       scrollSpeed: "3",                              // if scroll is true
-      apiKey: 'bdc660fcecc745228206b1865e7d0612',    // free API key from https://newsapi.org/register
+      apiKey: 'YOUR API KEY GOES HERE',    // free API key from https://newsapi.org/register
       useHeader: true,                               // False if you don't want a header
       header: "Over 30,000 News Sources!",           // Any text you want. useHeader must be true
       maxWidth: "350px",
