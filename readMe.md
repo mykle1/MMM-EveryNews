@@ -17,11 +17,11 @@
 ## Config.js entry and options
 ```
 {
-  disabled: f,
+    disabled: false,
     module: 'MMM-EveryNews',
     position: 'bottom center',
     config: {
-      source: 'bbc-news,cbs-news,fox-news,nbc-news,national-geographic', any source from https://newsapi.org/sources. // Up to 10 at once
+      source: 'bbc-news,cbs-news', // any source from https://newsapi.org/sources. // Up to 10 at once
       scroll: true,                                  // description scroll or static
       scrollSpeed: "3",                              // if scroll is true
       apiKey: 'bdc660fcecc745228206b1865e7d0612',    // free API key from https://newsapi.org/register
