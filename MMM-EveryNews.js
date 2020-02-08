@@ -11,12 +11,12 @@ Module.register("MMM-EveryNews", {
         useHeader: true,                      // False if you don't want a header
         header: "MMM-EveryNews",        // Any text you want. useHeader must be true
         maxWidth: "350px",
+        scroll: true,
         animationSpeed: 3000,                 // fade speed
         initialLoadDelay: 4250,
         retryDelay: 2500,
         rotateInterval:  5 * 60 * 1000,
         updateInterval: 30 * 60 * 1000,
-
     },
 
     getStyles: function() {
@@ -63,6 +63,40 @@ Module.register("MMM-EveryNews", {
         }
         var NatGeo = this.NatGeo[keys[this.activeItem]];
 
+
+        if (this.config.scroll === true) {
+
+        // The source of the article
+        var source = document.createElement("div");
+        source.classList.add("xsmall", "bright", "source");
+        source.innerHTML = NatGeo.source.name;
+        wrapper.appendChild(source);
+
+
+        // The title
+        var title = document.createElement("div");
+        title.classList.add("small", "bright", "title");
+        title.innerHTML = NatGeo.title;
+        wrapper.appendChild(title);
+
+
+        // The picture
+        var pic = document.createElement("div");
+        var img = document.createElement("img");
+        img.classList.add("photo");
+        img.src = NatGeo.urlToImage;
+        pic.appendChild(img);
+        wrapper.appendChild(pic);
+
+
+       // The description
+        var description = document.createElement("div");
+        description.classList.add("xsmall", "bright", "description");
+        description.innerHTML = '<marquee behavior="scroll" direction="left" scrollamount="'+this.config.scrollSpeed+'">' + NatGeo.description + '</marquee>';
+        wrapper.appendChild(description);
+
+      } else if (this.config.scroll === false) {
+
         // The source of the article
         var source = document.createElement("div");
         source.classList.add("xsmall", "bright", "source");
@@ -91,6 +125,8 @@ Module.register("MMM-EveryNews", {
         description.classList.add("xsmall", "bright", "description");
         description.innerHTML = NatGeo.description;
         wrapper.appendChild(description);
+
+      }
 
 		}
         return wrapper;

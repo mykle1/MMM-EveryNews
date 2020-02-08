@@ -1,11 +1,12 @@
 ## MMM-EveryNews
 
 * Over 30,000 News sources!
-* Choose one or many. Simplified addition to your config entry.
+* Choose up to 10 at once.
+* Simplified addition to your config entry.
 
 ## Examples
 
-![](images/1.png), ![](images/2.png), ![](images/3.png), 
+![](images/1.png), ![](images/2.png), ![](images/3.png),
 
 ## Installation
 
@@ -16,22 +17,28 @@
 ## Config.js entry and options
 ```
 {
-    disabled: false,
+  disabled: f,
     module: 'MMM-EveryNews',
-    position: 'bottom right',
+    position: 'bottom center',
     config: {
-      source: 'bbc-news,national-geographic',      // any source from https://newsapi.org/sources. // Up to 10 at once
-      apiKey: 'YOUR API KEY GOES HERE',            // free API key from https://newsapi.org/register
-      useHeader: true,                             // False if you don't want a header
-      header: "Over 30,000 News Sources!",         // Any text you want. useHeader must be true
+      source: 'bbc-news,cbs-news,fox-news,nbc-news,national-geographic', any source from https://newsapi.org/sources. // Up to 10 at once
+      scroll: true,                                  // description scroll or static
+      scrollSpeed: "3",                              // if scroll is true
+      apiKey: 'bdc660fcecc745228206b1865e7d0612',    // free API key from https://newsapi.org/register
+      useHeader: true,                               // False if you don't want a header
+      header: "Over 30,000 News Sources!",           // Any text you want. useHeader must be true
       maxWidth: "350px",
-      animationSpeed: 3000,                        // fade speed
-}
+      animationSpeed: 3000,                          // fade speed
+      rotateInterval: 5 * 60 * 1000,
+    }
 },
 ```
 
 ## For multiple News sources
-Separate sources by commas (Ex. 'fox-news,national-geographic'). Any source from https://newsapi.org/
+
+* Separate sources by commas
+* (Ex. 'bbc-news,national-geographic'). Any source from https://newsapi.org/sources
+* Up to 10 at a time
 
 ## Sources
 

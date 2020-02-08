@@ -32,5 +32,6 @@
 .MMM-EveryNews .description {
   color: cyan;             /* Color the information. Default is white. */
   text-align: center;           /* Align the information. (left, center, right) */
+  font-size: 18px;
 /*  display: none; */         /* Uncomment if you don't want descriptive information */
 }
