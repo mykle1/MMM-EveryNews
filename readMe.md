@@ -30,6 +30,7 @@
       maxWidth: "350px",
       animationSpeed: 3000,                          // fade speed
       rotateInterval: 5 * 60 * 1000,
+      userAgent: "MagicMirror",                      // User-Agent for API requests in accordance with NewsAPI's requirements (can be customized to any valid UserAgent string; must not be blank)
     }
 },
 ```

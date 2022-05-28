@@ -17,6 +17,7 @@ Module.register("MMM-EveryNews", {
         retryDelay: 2500,
         rotateInterval:  5 * 60 * 1000,
         updateInterval: 30 * 60 * 1000,
+	userAgent: "MagicMirror",		// keeping default simple but can be customized by the user; cannot be blank
     },
 
     getStyles: function() {
@@ -30,10 +31,14 @@ Module.register("MMM-EveryNews", {
 
         //  Set locale.
 
+	// Initialize variables for module
         this.NatGeo = [];
         this.activeItem = 0;
         this.rotateInterval = null;
         this.scheduleUpdate();
+	this.loaded = false;
+	this.hasError = false;
+	this.errorText = "";
     },
 
     getDom: function() {
@@ -42,11 +47,15 @@ Module.register("MMM-EveryNews", {
         wrapper.className = "wrapper";
         wrapper.style.maxWidth = this.config.maxWidth;
 
-        if (!this.loaded) {
+        if (!this.loaded && !this.hasError) {
             wrapper.innerHTML = "AnyNews Presents . . .";
             wrapper.classList.add("bright", "light", "small");
             return wrapper;
-        }
+        } else if (!this.loaded && this.hasError) {
+	    wrapper.innerHTML = "AnyNews Presents . . .<br>" + this.errorText;
+            wrapper.classList.add("bright", "light", "small");
+            return wrapper;
+	}
 
         if (this.config.useHeader != false) {
             var header = document.createElement("header");
@@ -140,7 +149,7 @@ Module.register("MMM-EveryNews", {
     },
 
     scheduleCarousel: function() {
-      //  console.log("Carousel of EveryNews fucktion!");
+      //  console.log("Carousel of EveryNews function!");
         this.rotateInterval = setInterval(() => {
             this.activeItem++;
             this.updateDom(this.config.animationSpeed);
@@ -160,12 +169,25 @@ Module.register("MMM-EveryNews", {
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === "NATGEO_RESULT") {
+	    // reset error if we get a real result
+	    this.hasError = false;
+	    this.errorText = "";
             this.processNatGeo(payload);
             if (this.rotateInterval == null) {
                 this.scheduleCarousel();
             }
             this.updateDom(this.config.animationSpeed);
-        }
+        } else if (notification === "NATGEO_ERROR") {
+	    // Cue up an error code and set the error message based on the returned results
+	    this.hasError = true;
+	    this.errorText = payload;
+
+	    // Still need to cue the animation etc. so the error message gets displayed.
+            if (this.rotateInterval == null) {
+                this.scheduleCarousel();
+            }
+            this.updateDom(this.config.animationSpeed);
+	}
         this.updateDom(this.config.initialLoadDelay);
     },
 });
